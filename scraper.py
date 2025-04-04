@@ -1,7 +1,7 @@
-from selenium.webdriver.firefox.service import Service
-from selenium.webdriver.common.by import By
-from selenium import webdriver
-import pandas as pd
+from selenium.webdriver.firefox.service import Service # type: ignore
+from selenium.webdriver.common.by import By # type: ignore
+from selenium import webdriver # type: ignore
+import pandas as pd # type: ignore
 import os
 
 service = Service()
