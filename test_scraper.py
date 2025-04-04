@@ -7,8 +7,7 @@ import os
 import pytest # type: ignore
 
 class TestScraper:
-    @pytest.fixture(scope='class', autouse=True)
-    def setup(self):
+    def test_driver_get(self):
         service = Service()
         options = webdriver.FirefoxOptions()
         options.add_argument("--headless")
@@ -16,21 +15,22 @@ class TestScraper:
         driver = webdriver.Firefox(service=service, options=options)
         driver.get('https://hoopshype.com/salaries/players/')
 
-        yield
-
-        self.driver.quit()
-
-    def test_driver_get(self):
-        assert self.driver.title == "NBA Player Salaries | HoopsHype"
-        self.driver.quit()
+        assert driver.title == "NBA Player Salaries | HoopsHype"
+        driver.quit()
 
     def test_csv_format(self):
-        players = self.driver.find_elements(By.XPATH, '//td[@class="name"]')
+        service = Service()
+        options = webdriver.FirefoxOptions()
+        options.add_argument("--headless")
+
+        driver = webdriver.Firefox(service=service, options=options)
+        driver.get('https://hoopshype.com/salaries/players/')
+        players = driver.find_elements(By.XPATH, '//td[@class="name"]')
         players_list = []
         for p in range(len(players)):
             players_list.append(players[p].text)
 
-        salaries = self.driver.find_elements(By.XPATH, '//td[@class="hh-salaries-sorted"]')
+        salaries = driver.find_elements(By.XPATH, '//td[@class="hh-salaries-sorted"]')
         salaries_list = []
         for s in range(len(salaries)):
             salaries_list.append(salaries[s].text)
@@ -43,4 +43,4 @@ class TestScraper:
         player_salaries_df.columns = header
 
         assert list(player_salaries_df.columns.values) == ['PLAYER', '2024/25']
-        self.driver.quit()
+        driver.quit()
