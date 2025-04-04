@@ -1,0 +1,19 @@
+[project]
+name = "scraper"
+version = "0.1.0"
+description = "Scrapes data of basketball players and their respective salaries in 2024 from https://hoopshype.com/salaries/players/"
+authors = [
+    {name = "Harish Kanna (https://github.com/Pekka20123)"}
+]
+license = {text = "GNU General Public License v3.0"}
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "selenium (>=4.30.0,<5.0.0)",
+    "pandas (>=2.2.3,<3.0.0)"
+]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
