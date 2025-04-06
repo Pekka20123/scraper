@@ -1,5 +1,5 @@
 # scraper
-A simple scraper that scrapes data of basketball players and their respective salaries in 2024 from https://hoopshype.com/salaries/players/
+A simple scraper that scrapes data of basketball players and their respective salaries from 1990 - 2024 from https://hoopshype.com/salaries/players/
 
 # Usage
 ```
